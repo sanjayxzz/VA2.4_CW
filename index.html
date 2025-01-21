@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <h1>user profile form</h1>
+    <form>
+      <label id="userName">Name: </label>
+      <input type="text" id="userName" />
+      <br />
+      <label for="fullAddress">Enter Full Address: </label><br />
+      <textarea id="fullAddress" rows="5" cols="30"></textarea>
+      <br />
+      <label>gender:</label><br />
+      <label for="male"
+        ><input type="radio" name="gender" value="male" id="male" />
+        male </label
+      ><br />
+      <label for="female"
+        ><input type="radio" name="gender" value="female" id="female" />
+        female </label
+      ><br />
+      <label for="other"
+        ><input type="radio" name="gender" value="other" id="other" />
+        other</label
+      ><br />
+      <label>Intrests:</label><br />
+      <label for="reading"
+        ><input
+          type="checkbox"
+          name="Intrests"
+          value="reading"
+          id="reading"
+        />reading</label
+      >
+      <label for="travelling"
+        ><br />
+        <input
+          type="checkbox"
+          name="Intrests"
+          value="travelling"
+          id="travelling"
+        />travelling</label
+      ><br />
+      <label for="content creations"
+        ><input
+          type="checkbox"
+          name="Interests"
+          value="content creations"
+          id="content creations"
+        />content creations</label
+      ><br />
+      <label>select favourite color:</label><br />
+      <select id="colorSelect">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="formResult"></div>
+    <script>
+      const userProfileForm = document.getElementById("userProfileForm");
+      userProfileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const userName = document.getElementById("userName").value;
+        const fullAddress = document.getElementById("fullAddress").value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+        const Interests = document.querySelectorAll(
+          'input[name="Interests"]:checked'
+        );
+        let selectedInterests = [];
+        for (let i = 0; i < interests.length; i++) {
+          selectedInterests.push(interests[i].value);
+        }
+        const favColor = document.getElementById("colorSelect").value;
+        const userInputValues = `<h2>submitted information</h2>
+              <p>name: ${userName}</p>
+              <p>ful address: ${fullAddress}</p>
+              <p>Gender: ${gender}</p>
+              <p>Interests: ${interests.join(",")}</p>
+              <p>favourite Color:${favColor}</p>`;
+        const divElement = document.getElementById("formResult");
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
